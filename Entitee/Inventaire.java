@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author baboulou
  * @param Inventaire
- *            version Master<br/>
+ *            version Developpement<br/>
  */
 public class Inventaire<T> {
 	// propriétés de classe

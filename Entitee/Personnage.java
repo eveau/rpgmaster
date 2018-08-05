@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * @author baboulou
  * @param Personnage
- *            version Master<br/>
+ *            version Developpement<br/>
  */
 public class Personnage implements Serializable {
 	// propriétés de classe
