@@ -26,6 +26,7 @@ public class VerifInstallService {
 		{
 			SysService.creationdesRepertoires();
 			// a dev utilité ?? Constante.isJeuRepExist = true;
+			System.out.println("verifInitRep() apres creationdesRepertoires\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
 			JoueurService.creationCompteJoueur();
 		}
 

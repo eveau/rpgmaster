@@ -40,22 +40,23 @@ public class JoueurService {
 		j.setIdentifiant(verifIdent());
 		j.setMail(verifMail());
 		j.setMotDePasse(verifmdp());
+		// pb si first time
 		j.setIsidentifie(false);
 		// creation du fichier
 		creerFichierJoueur();
+		System.out.println("creationCompteJoueur apres creerFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
 		// écriture des données dans le fichier
 		EcritureFichierJoueur(j);
+		System.out.println("creationCompteJoueur apres EcritureFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
 	}
 
 	public static String verifIdent()
 	{
 		final String ident = Menu.choixTxt("Saisi du nom de l'identifiant joueur");
 		final boolean hasNonAlpha = ident.matches("^.*[^a-zA-Z0-9 ].*$");
-		if (hasNonAlpha == true || ident == null || ident.isEmpty() || ident.length() < 3 || ident.length() > 20
-				|| ident.contains(" "))
+		if (hasNonAlpha == true || ident == null || ident.isEmpty() || ident.length() < 3 || ident.length() > 20 || ident.contains(" "))
 		{
-			Constante.LOGJoueurService.info(
-					"erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace d'au moins 3 caractères et un max de 20");
+			Constante.LOGJoueurService.info("erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace d'au moins 3 caractères et un max de 20");
 			// pour la branche dev
 			// System.out.println( "erreur de saisie prenom\n saisir que des
 			// lettres avec chiffres sans espace d'au moins 3 caractères et un
@@ -69,8 +70,7 @@ public class JoueurService {
 	private static String verifMail()
 	{
 		final String mail = Menu.choixTxt("Saisir l'email du joueur");
-		final boolean isMailValid = mail.matches(
-				"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
+		final boolean isMailValid = mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 		if (!isMailValid)
 		{
 			// branche dev tester le Constante.LOGJoueurService.info("msg")
@@ -84,11 +84,10 @@ public class JoueurService {
 	{
 		final String mdp = Menu.choixTxt("Saisir le mot de passe du joueur");
 		final boolean hasNonAlpha = mdp.matches("^.*[^a-zA-Z0-9 ].*$");
-		if (hasNonAlpha == true || mdp == null || mdp.isEmpty() || mdp.length() < 5 || mdp.length() > 20
-				|| mdp.contains(" "))
+		if (hasNonAlpha == true || mdp == null || mdp.isEmpty() || mdp.length() < 5 || mdp.length() > 20 || mdp.contains(" "))
 		{
 			// branche dev tester le Constante.LOGJoueurService.info("msg")
-			System.out.println("erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace");
+			System.out.println("erreur de saisie de mot de passe\n saisir que des lettres avec chiffres sans espace");
 			verifmdp();
 		}
 		return mdp;
@@ -99,11 +98,11 @@ public class JoueurService {
 		try
 		{
 			new File(Constante.fichierJoueur).createNewFile();
+			System.out.println("creerFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
 		}
 		catch (final IOException e)
 		{
-			Constante.LOGPersoservice.log(Level.SEVERE, "erreur: " + e.getMessage() + " a cause de: " + e.getCause(),
-					e);
+			Constante.LOGPersoservice.log(Level.SEVERE, "erreur: " + e.getMessage() + " a cause de: " + e.getCause(), e);
 		}
 	}
 
@@ -111,10 +110,12 @@ public class JoueurService {
 	{
 		try
 		{
+			System.out.println("creerFichierJoueur()\tEcritureFichierJoueur: " + Constante.isfichierJoueurExist);
 			final FileOutputStream fos = new FileOutputStream(Constante.fichierJoueur);
 			final ObjectOutputStream oos = new ObjectOutputStream(fos);
 			// sauvegarde serialization
 			oos.writeObject(j);
+			System.out.println("EcritureFichierJoueur() apres oos.writeObject(j)\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
 			System.out.println("Compte Joueur" + j.toString() + " sauvegardé");
 			oos.flush();
 			oos.close();
@@ -123,15 +124,13 @@ public class JoueurService {
 		catch (final FileNotFoundException e)
 		{
 			// branche dev a confirmer
-			Constante.LOGJoueurService.severe("Le fichier " + Constante.fichierJoueur
-					+ " n'a pas pu être crée\nerreur: " + e.getMessage() + " a cause de: " + e.getCause());
+			Constante.LOGJoueurService.severe("Le fichier " + Constante.fichierJoueur + " n'a pas pu être crée\nerreur: " + e.getMessage() + " a cause de: " + e.getCause());
 			System.exit(1);
 		}
 		catch (final IOException e)
 		{
 			// branche dev a confirmer
-			Constante.LOGJoueurService.severe("La sauvegarde de l'objet " + j.toString()
-					+ " compte joueur a échoué\n erreur: " + e.getMessage() + " a cause de: " + e.getCause());
+			Constante.LOGJoueurService.severe("La sauvegarde de l'objet " + j.toString() + " compte joueur a échoué\n erreur: " + e.getMessage() + " a cause de: " + e.getCause());
 			System.exit(2);
 		}
 
@@ -151,11 +150,8 @@ public class JoueurService {
 		JoueurService.login(j);
 		Menu.general(j);
 		/*
-		 * pour dev a verifier le try catch IOException unreachable try {
-		 * Menu.general(); } catch (final IOException e) {
-		 * Constante.LOGJoueurService.
-		 * warning("erreur de chargement du menu general");
-		 * Constante.LOGJoueurService.finest(Constante.msge(e)); }
+		 * pour dev a verifier le try catch IOException unreachable try { Menu.general(); } catch (final IOException e) { Constante.LOGJoueurService.
+		 * warning("erreur de chargement du menu general"); Constante.LOGJoueurService.finest(Constante.msge(e)); }
 		 */
 	}
 
@@ -174,8 +170,7 @@ public class JoueurService {
 
 	private static void isConnexConforme(Joueur j)
 	{
-		if (recupInfoCompteJoueur().getIdentifiant().equals(j.getIdentifiant())
-				&& recupInfoCompteJoueur().getMotDePasse().equals(j.getMotDePasse()))
+		if (recupInfoCompteJoueur().getIdentifiant().equals(j.getIdentifiant()) && recupInfoCompteJoueur().getMotDePasse().equals(j.getMotDePasse()))
 		{
 			System.out.println("identification réussie");
 			j.setIsidentifie(true);
@@ -244,14 +239,11 @@ public class JoueurService {
 		catch (final FileNotFoundException e)
 		{
 
-			Constante.LOGJoueurService.severe(
-					"Le fichier " + Constante.fichierJoueur + " n'a pas pu etre trouve ou est inexistant\nerreur: "
-							+ e.getMessage() + " a cause de: " + e.getCause());
+			Constante.LOGJoueurService.severe("Le fichier " + Constante.fichierJoueur + " n'a pas pu etre trouve ou est inexistant\nerreur: " + e.getMessage() + " a cause de: " + e.getCause());
 		}
 		catch (final IOException e)
 		{
-			Constante.LOGJoueurService.severe(
-					"La restauration de l'objet a echoue\nerreur: " + e.getMessage() + " a cause de: " + e.getCause());
+			Constante.LOGJoueurService.severe("La restauration de l'objet a echoue\nerreur: " + e.getMessage() + " a cause de: " + e.getCause());
 		}
 		catch (final ClassNotFoundException e)
 		{
