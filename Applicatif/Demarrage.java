@@ -3,6 +3,7 @@ package Applicatif;
 import Services.JoueurService;
 import Systeme.VerifInstallService;
 
+//normalement c'est celui de la branche dev
 //import Service.JoueurService;
 //import Service.VerifInstallService;
 /**
