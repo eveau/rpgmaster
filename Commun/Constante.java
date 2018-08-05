@@ -12,7 +12,7 @@ import Systeme.SysService;
  * @author baboulou
  * @param Constantes
  *            générales<br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class Constante {
 	// propriétés de classe
