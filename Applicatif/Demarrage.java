@@ -1,12 +1,15 @@
 package Applicatif;
 
+import Services.JoueurService;
+import Systeme.VerifInstallService;
+
 //import Service.JoueurService;
 //import Service.VerifInstallService;
 /**
  * @author baboulou
  * @param Appel
  *            du Menu General. <br/>
- * 			Version Master<br/>
+ *            Version Master<br/>
  *            Demande et saisit l'entrée de l'utilisateur
  */
 public class Demarrage {
@@ -20,8 +23,8 @@ public class Demarrage {
 	public static void main(String[] args)
 	{
 		System.out.println("Démarrage, jeu RPG");
-		// VerifInstallService.verifInitRep();
-		// JoueurService.connection();
+		VerifInstallService.verifInitRep();
+		JoueurService.connection();
 
 	}
 
