@@ -21,7 +21,7 @@ public class MenuPerso {
 
 	// methodes de classe
 	/**
-	 * Menu de Creation de Perso
+	 * Menu de Creation de Personnage
 	 */
 	public static void creationPersoMenu(Joueur j)
 	{
@@ -34,15 +34,19 @@ public class MenuPerso {
 			break;
 		case 2:
 			System.out.println("vers PersoService.charger1Perso ();");
+			creationPersoMenu(j);
 			break;
 		case 3:
 			System.out.println("vers PersoService.modifier1Perso ();");
+			creationPersoMenu(j);
 			break;
 		case 4:
 			System.out.println("vers PersoService.save1Perso ();");
+			creationPersoMenu(j);
 			break;
 		case 5:
 			System.out.println("vers PartieService.lancerPartie()");
+			creationPersoMenu(j);
 			break;
 		case 6:
 			Menu.quitterJeu(j);

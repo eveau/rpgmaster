@@ -211,6 +211,9 @@ public class JoueurService {
 
 	}
 
+	/**
+	 * Déconnection du joueur
+	 */
 	public static void logoff(Joueur j)
 	{
 		// dev a verifier en conformite
@@ -223,6 +226,9 @@ public class JoueurService {
 		// oui enregistre l'etat isidentifie dans le fichier joueur
 	}
 
+	/**
+	 * extrait à partir du fichier le joueur versun objet tmp
+	 */
 	public static final Joueur recupInfoCompteJoueur()
 	{
 		Joueur jRestored = new Joueur();
@@ -319,6 +325,9 @@ public class JoueurService {
 		EcritureFichierJoueur(tmp);
 	}
 
+	/**
+	 * Récuperation des données du Joueur à partir du fichier
+	 */
 	public static Joueur recupTotJoueur()
 	{
 		final Joueur tmp = new Joueur();
