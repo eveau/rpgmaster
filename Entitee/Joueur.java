@@ -66,6 +66,13 @@ public class Joueur implements Serializable {
 		this.isidentifie = isidentifie;
 	}
 
+	@Override
+	public String toString()
+	{
+		return "Joueur [identifiant=" + identifiant + ", mail=" + mail + ", motDePasse=" + motDePasse + ", isidentifie="
+				+ isidentifie + ", jListe2persos=" + jListe2persos + "]";
+	}
+
 	// methodes de classe
 
 	// override

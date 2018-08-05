@@ -57,6 +57,7 @@ public class Menu {
 			if (JoueurService.recupInfoCompteJoueur().isIsidentifie())
 			{
 				JoueurService.logoff(j);
+				general(j);
 			}
 			else
 			{
@@ -175,7 +176,10 @@ public class Menu {
 	 */
 	public static void quitterJeu(Joueur j)
 	{
-		JoueurService.logoff(j);
+		if (j.isIsidentifie())
+		{
+			JoueurService.logoff(j);
+		}
 		System.out.println("Sortie de jeu, aurevoir");
 		// sc.close();
 		System.exit(0);

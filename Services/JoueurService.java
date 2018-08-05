@@ -115,7 +115,7 @@ public class JoueurService {
 			final ObjectOutputStream oos = new ObjectOutputStream(fos);
 			// sauvegarde serialization
 			oos.writeObject(j);
-			System.out.println("Compte Joueur sauvegardé");
+			System.out.println("Compte Joueur" + j.toString() + " sauvegardé");
 			oos.flush();
 			oos.close();
 			fos.close();
@@ -179,6 +179,12 @@ public class JoueurService {
 		{
 			System.out.println("identification réussie");
 			j.setIsidentifie(true);
+			// solved
+			// ecriture a ce moment de l'etat identifie ? oui car on se base sur
+			// le fichier
+			// methode ecriture du statut identifie dans le fichier a developper
+			saveisIdentfileJ(j);
+
 			// modifPourIsidentifie(j);
 			// modifCompteJoueur(j);
 			// EcritureFichierJoueur(j);
@@ -211,10 +217,10 @@ public class JoueurService {
 		// utilité de recupInfoCompteJoueur()?
 		j.setIsidentifie(false);
 		saveisIdentfileJ(j);
+		// solved
 		// utilité ? uniquement si le joueur le demande explicitement
 		// modifCompteJoueur(j);
 		// oui enregistre l'etat isidentifie dans le fichier joueur
-		Menu.general(j);
 	}
 
 	public static final Joueur recupInfoCompteJoueur()
@@ -255,8 +261,23 @@ public class JoueurService {
 	 */
 	private static void saveisIdentfileJ(Joueur j)
 	{
-		// a dev verifier si ca ne change pa le mdp ou nom autrement par faille
-		EcritureFichierJoueur(j);
+		final Joueur tmp = recupTotJoueur();
+		tmp.setIsidentifie(j.isIsidentifie());
+		if (tmp.getIdentifiant().equals(j.getIdentifiant()) && tmp.getMotDePasse().equals(j.getMotDePasse()))
+		{
+			EcritureFichierJoueur(tmp);
+		}
+		// solved
+		// a dev verifier si ca ne change pa le mdp ou nom autrement par faille,
+		// oui ca bug, on ne doit ecrire que le statut identifie et uniquement
+		// s'il existe dans le fichier
+		// 1. recupérer les data du fichier joueur
+		// 2. comparer si le nom du fichier correspond a celui en memeoire
+		// active de j
+		// 3. si ok on ecrit dans le fichier
+		// 4. si non on ne fait rien et on quitte le logoff.
+		// EcritureFichierJoueur(j);
+		System.out.println("pb a l'ecriture du fichier pour sauvegarder saveisIdentfileJ");
 
 	}
 
@@ -275,11 +296,7 @@ public class JoueurService {
 		// j.setIsidentifie("? a decider");
 		// puis enregistrer avec EcritureFichierJoueur(j);
 
-		final Joueur tmp = new Joueur();
-		tmp.setIdentifiant((recupInfoCompteJoueur().getIdentifiant()));
-		tmp.setMail(recupInfoCompteJoueur().getMail());
-		tmp.setMotDePasse(recupInfoCompteJoueur().getMotDePasse());
-		tmp.setIsidentifie(recupInfoCompteJoueur().isIsidentifie());
+		final Joueur tmp = recupTotJoueur();
 
 		if (!j.getIdentifiant().equals(tmp.getIdentifiant()))
 		{
@@ -300,6 +317,16 @@ public class JoueurService {
 			tmp.setIsidentifie(j.isIsidentifie());
 		}
 		EcritureFichierJoueur(tmp);
+	}
+
+	public static Joueur recupTotJoueur()
+	{
+		final Joueur tmp = new Joueur();
+		tmp.setIdentifiant((recupInfoCompteJoueur().getIdentifiant()));
+		tmp.setMail(recupInfoCompteJoueur().getMail());
+		tmp.setMotDePasse(recupInfoCompteJoueur().getMotDePasse());
+		tmp.setIsidentifie(recupInfoCompteJoueur().isIsidentifie());
+		return tmp;
 	}
 	// override
 
