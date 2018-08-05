@@ -17,7 +17,7 @@ import Entitee.Joueur;
  * @author baboulou
  * @param Service
  *            controleur<br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class JoueurService {
 	// propriétés de classe

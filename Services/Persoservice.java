@@ -7,7 +7,7 @@ import Entitee.Joueur;
  * @author baboulou
  * @param Méthode
  *            concernant le Personnage<br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class Persoservice {
 	// propriétés de classe

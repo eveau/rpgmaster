@@ -7,7 +7,7 @@ import Services.Persoservice;
  * @author baboulou
  * @param Menus
  *            du perso <br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class MenuPerso {
 	// propriétés de classe

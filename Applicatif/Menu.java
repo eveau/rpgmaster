@@ -9,7 +9,7 @@ import Services.JoueurService;
  * @author baboulou
  * @param Menus
  *            du jeu<br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class Menu {
 	// propriétés de classe

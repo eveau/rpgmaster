@@ -7,7 +7,7 @@ import Services.JoueurService;
  * @author baboulou
  * @param Pour
  *            inititialisation de départ au démarrage<br/>
- *            version Developpement<br/>
+ *            version de Testing<br/>
  */
 public class VerifInstallService {
 	// propriétés de classe
