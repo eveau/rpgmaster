@@ -1,5 +1,8 @@
 package Systeme;
 
+import java.io.File;
+
+import Applicatif.Menu;
 import Commun.Constante;
 import Services.JoueurService;
 
@@ -22,11 +25,11 @@ public class VerifInstallService {
 	// methodes de classe
 	public static void verifInitRep()
 	{
-		if (!Constante.isJeuRepExist)
+		if (!new File(Constante.repertoireJeu).exists())
 		{
 			SysService.creationdesRepertoires();
 			// a dev utilité ?? Constante.isJeuRepExist = true;
-			System.out.println("verifInitRep() apres creationdesRepertoires\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
+			Menu.ifechier();
 			JoueurService.creationCompteJoueur();
 		}
 

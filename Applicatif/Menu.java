@@ -1,5 +1,6 @@
 package Applicatif;
 
+import java.io.File;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -39,7 +40,7 @@ public class Menu {
 		if (JoueurService.recupInfoCompteJoueur().isIsidentifie())
 		{
 			// a dev - le joueur est logué
-			a = "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter";
+			a = "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter 5.isfichierJoueurExist";
 
 			j.setIdentifiant(JoueurService.recupInfoCompteJoueur().getIdentifiant());
 			j.setMail(JoueurService.recupInfoCompteJoueur().getMail());
@@ -47,7 +48,7 @@ public class Menu {
 		}
 		else
 		{
-			a = "1.Se loguer  4.Quitter";
+			a = "1.Se loguer  4.Quitter 5.isfichierJoueurExist";
 		}
 
 		final short c = choixNb(a);
@@ -73,6 +74,9 @@ public class Menu {
 			break;
 		case 4:
 			quitterJeu(j);
+			break;
+		case 5:
+			ifechier();
 			break;
 		default:
 			System.out.println("erreur de saisie, choisir un nombre");
@@ -205,6 +209,15 @@ public class Menu {
 		// sc.close();
 		System.exit(0);
 	}
+
+	public static void ifechier()
+	{
+		final String msg = System.getProperty("user.dir") + "\\jeu\\compteJoueur.bin";
+
+		System.out.println("new File(msg).exists() :" + new File(msg).exists());
+		System.out.println("Constante.isfichierJoueurExist: " + new File(Constante.fichierJoueur).exists());
+	}
+
 	// override
 
 	// tostring

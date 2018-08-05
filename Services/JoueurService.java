@@ -44,10 +44,10 @@ public class JoueurService {
 		j.setIsidentifie(false);
 		// creation du fichier
 		creerFichierJoueur();
-		System.out.println("creationCompteJoueur apres creerFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
+		Menu.ifechier();
 		// écriture des données dans le fichier
 		EcritureFichierJoueur(j);
-		System.out.println("creationCompteJoueur apres EcritureFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
+		Menu.ifechier();
 	}
 
 	public static String verifIdent()
@@ -84,7 +84,7 @@ public class JoueurService {
 	{
 		final String mdp = Menu.choixTxt("Saisir le mot de passe du joueur");
 		final boolean hasNonAlpha = mdp.matches("^.*[^a-zA-Z0-9 ].*$");
-		if (hasNonAlpha == true || mdp == null || mdp.isEmpty() || mdp.length() < 5 || mdp.length() > 20 || mdp.contains(" "))
+		if (hasNonAlpha == true || mdp == null || mdp.isEmpty() || mdp.length() < 3 || mdp.length() > 20 || mdp.contains(" "))
 		{
 			// branche dev tester le Constante.LOGJoueurService.info("msg")
 			System.out.println("erreur de saisie de mot de passe\n saisir que des lettres avec chiffres sans espace");
@@ -98,7 +98,7 @@ public class JoueurService {
 		try
 		{
 			new File(Constante.fichierJoueur).createNewFile();
-			System.out.println("creerFichierJoueur()\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
+			Menu.ifechier();
 		}
 		catch (final IOException e)
 		{
@@ -110,12 +110,13 @@ public class JoueurService {
 	{
 		try
 		{
-			System.out.println("creerFichierJoueur()\tEcritureFichierJoueur: " + Constante.isfichierJoueurExist);
+			Menu.ifechier();
+			System.out.println("creerFichierJoueur()\tEcritureFichierJoueur: " + new File(Constante.fichierJoueur).exists());
 			final FileOutputStream fos = new FileOutputStream(Constante.fichierJoueur);
 			final ObjectOutputStream oos = new ObjectOutputStream(fos);
 			// sauvegarde serialization
 			oos.writeObject(j);
-			System.out.println("EcritureFichierJoueur() apres oos.writeObject(j)\tConstante.isfichierJoueurExist: " + Constante.isfichierJoueurExist);
+			Menu.ifechier();
 			System.out.println("Compte Joueur" + j.toString() + " sauvegardé");
 			oos.flush();
 			oos.close();
@@ -139,7 +140,8 @@ public class JoueurService {
 	public static void connection()
 	{
 		// le fichierJoueur existe t il?
-		if (!Constante.isfichierJoueurExist)
+		final boolean isfichierjoueurexist = new File(Constante.fichierJoueur).exists();
+		if (!isfichierjoueurexist)
 		{
 			// lancement de creation de compte joueur. Puis on cree le fichier
 			// Joueur.
