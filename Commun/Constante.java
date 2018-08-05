@@ -1,6 +1,5 @@
 package Commun;
 
-import java.io.File;
 import java.util.logging.Logger;
 
 import Applicatif.Demarrage;
@@ -12,7 +11,7 @@ import Systeme.SysService;
  * @author baboulou
  * @param Constantes
  *            générales<br/>
- *            version Developpement<br/>
+ *            version de Testing 0.5.1<br/>
  */
 public class Constante {
 	// propriétés de classe
@@ -30,11 +29,11 @@ public class Constante {
 	public final static String fichier1Partie = chemindirPartie + "unepartie.bin";
 	public final static String listeDeParties = chemindirPartie + "liste2parties.bin";
 	public final static String fichierJoueur = chemindirJeu + "compteJoueur.bin";
-
-	public static boolean isJeuRepExist = new File(Constante.repertoireJeu).exists();
-	public static boolean isfichierJoueurExist = new File(Constante.fichierJoueur).exists();
-	public static boolean isRepExist = false;
-	public static boolean isfichierExist = false;
+	// public static boolean isJeuRepExist = new File(Constante.repertoireJeu).exists();
+	// bug toujours a false, a voir, solved
+	// public static boolean isfichierJoueurExist = new File(Constante.fichierJoueur).exists();
+	// public static boolean isRepExist = false;
+	// public static boolean isfichierExist = false;
 
 	public static final Logger LOGSyService = Logger.getLogger(SysService.class.getName());
 	public static final Logger LOGPersoservice = Logger.getLogger(Persoservice.class.getName());

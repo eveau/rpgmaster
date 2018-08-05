@@ -5,8 +5,7 @@ import java.util.List;
 
 /**
  * Un Joueur peut avoir plusieurs parties.<br/>
- * Version Developpement Un joueur peut avoir plusieurs persos. Chaque partie
- * contient 1 seul perso.<br/>
+ * Version Developpement Un joueur peut avoir plusieurs persos. Chaque partie contient 1 seul perso.<br/>
  *
  * @author baboulou
  *
@@ -64,6 +63,12 @@ public class Joueur implements Serializable {
 	public void setIsidentifie(boolean isidentifie)
 	{
 		this.isidentifie = isidentifie;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Joueur [identifiant=" + identifiant + ", mail=" + mail + ", motDePasse=" + motDePasse + ", isidentifie=" + isidentifie + ", jListe2persos=" + jListe2persos + "]";
 	}
 
 	// methodes de classe

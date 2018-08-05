@@ -10,7 +10,7 @@ import Systeme.VerifInstallService;
  * @author baboulou
  * @param Appel
  *            du Menu General. <br/>
- *            Version Developpement<br/>
+ *            Version de Testing 0.5.1<br/>
  *            Demande et saisit l'entrée de l'utilisateur
  */
 public class Demarrage {

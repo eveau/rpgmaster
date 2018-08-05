@@ -1,5 +1,8 @@
 package Systeme;
 
+import java.io.File;
+
+import Applicatif.Menu;
 import Commun.Constante;
 import Services.JoueurService;
 
@@ -7,7 +10,7 @@ import Services.JoueurService;
  * @author baboulou
  * @param Pour
  *            inititialisation de départ au démarrage<br/>
- *            version Developpement<br/>
+ *            version de Testing 0.5.1<br/>
  */
 public class VerifInstallService {
 	// propriétés de classe
@@ -22,10 +25,11 @@ public class VerifInstallService {
 	// methodes de classe
 	public static void verifInitRep()
 	{
-		if (!Constante.isJeuRepExist)
+		if (!new File(Constante.repertoireJeu).exists())
 		{
 			SysService.creationdesRepertoires();
 			// a dev utilité ?? Constante.isJeuRepExist = true;
+			Menu.ifechier();
 			JoueurService.creationCompteJoueur();
 		}
 
