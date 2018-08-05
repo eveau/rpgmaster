@@ -7,7 +7,7 @@ import Services.Persoservice;
  * @author baboulou
  * @param Menus
  *            du perso <br/>
- *            version de Testing<br/>
+ *            version de Testing 0.5.1<br/>
  */
 public class MenuPerso {
 	// propriétés de classe
@@ -25,8 +25,7 @@ public class MenuPerso {
 	 */
 	public static void creationPersoMenu(Joueur j)
 	{
-		final short c = Menu.choixNb(
-				"1.Création d'un perso  2.Charger un perso 3.Modifier un perso 4.Sauvegarder le perso 5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
+		final short c = Menu.choixNb("1.Création d'un perso  2.Charger un perso 3.Modifier un perso 4.Sauvegarder le perso 5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
 		switch (c)
 		{
 		case 1:

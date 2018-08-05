@@ -8,7 +8,7 @@ import Commun.Constante;
  * @author baboulou
  * @param Opération
  *            sur fichiers systèmes<br/>
- *            version de Testing<br/>
+ *            version de Testing 0.5.1<br/>
  */
 public class SysService {
 	// propriétés de classe
@@ -36,8 +36,7 @@ public class SysService {
 		}
 		catch (final Exception e)
 		{
-			Constante.LOGSyService.severe("erreur de création du répertoire " + x + ", " + e.getCause()
-					+ "\nRaison invoquée : " + e.getMessage());
+			Constante.LOGSyService.severe("erreur de création du répertoire " + x + ", " + e.getCause() + "\nRaison invoquée : " + e.getMessage());
 		}
 	}
 	// override
