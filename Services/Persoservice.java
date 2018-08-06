@@ -358,7 +358,7 @@ public class Persoservice {
 		}
 		else
 		{
-			// methode for bouclée
+			// methode fort bouclée
 			for (int i2 = 0; i2 < totalperso; i2++)
 			{
 				if (ab.equals(j.getjListe2persos().get(i2).getNom()))
