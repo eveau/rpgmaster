@@ -148,7 +148,8 @@ public class JoueurService {
 			JoueurService.creationCompteJoueur();
 		}
 		final Joueur j = new Joueur();
-		// login
+		// login, delogue avant si perte de conection qui a laisssé a identifé true
+		JoueurService.logoff(j);
 		JoueurService.login(j);
 		Menu.general(j);
 		/*
@@ -212,11 +213,10 @@ public class JoueurService {
 		// dev a verifier en conformite
 		// utilité de recupInfoCompteJoueur()?
 		j.setIsidentifie(false);
-		saveisIdentfileJ(j);
-		// solved
-		// utilité ? uniquement si le joueur le demande explicitement
-		// modifCompteJoueur(j);
-		// oui enregistre l'etat isidentifie dans le fichier joueur
+		final Joueur tmp = recupTotJoueur();
+		tmp.setIsidentifie(false);
+		EcritureFichierJoueur(tmp);
+		// saveisIdentfileJ(j);
 	}
 
 	/**
