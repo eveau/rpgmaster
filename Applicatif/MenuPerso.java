@@ -27,24 +27,27 @@ public class MenuPerso {
 	 */
 	public static Object creationPersoMenu(Joueur j)
 	{
-		final String c = Menu.choixTxt("1.Création d'un perso  2.Charger un perso 3.Modifier un perso 4.Sauvegarder le perso 5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
+		final String c = Menu
+				.choixTxt("1.Création d'un perso 2.Visualiser ses perso 3.Charger un perso ou un modele 4.Modifier un perso \n" + " 5.Supprimer un perso 6.Lancer la partie  7.retour menu general 8. Quitter le jeu ");
 		switch (c)
 		{
 		case "1":
 			return Persoservice.creationPerso(j);
 		case "2":
-			System.out.println("vers PersoService.charger1Perso ();");
-			return creationPersoMenu(j);
+			return Persoservice.visuPerso(j);
 		case "3":
-			System.out.println("vers PersoService.modifier1Perso ();");
+			System.out.println("vers PersoService.charge1Perso ();");
 			return creationPersoMenu(j);
 		case "4":
-			System.out.println("vers PersoService.save1Perso ();");
+			System.out.println("vers PersoService.modifie1Perso ();");
 			return creationPersoMenu(j);
 		case "5":
-			System.out.println("vers PartieService.lancerPartie()");
-			return creationPersoMenu(j);
+			System.out.println("vers PartieService.effacePerso()");
+			return Persoservice.effacePerso(j);
 		case "6":
+			System.out.println("vers PartieService.lancer1Partie()");
+			return creationPersoMenu(j);
+		case "8":
 			// a dev ajouter un return
 			Menu.quitterJeu(j);
 			break;
@@ -58,6 +61,7 @@ public class MenuPerso {
 		}
 		return c;
 	}
+
 	// override
 
 	// tostring

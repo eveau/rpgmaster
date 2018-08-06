@@ -330,6 +330,83 @@ public class Persoservice {
 			System.out.println("Caracteristique " + cle + " attribué à: " + p.getCaracteristiques().get(cle));
 		}
 	}
+
+	public static Object visuPerso(Joueur j)
+	{
+		System.out.println(" liste actuelle des persos: " + j.getjListe2persos().toString());
+
+		return MenuPerso.creationPersoMenu(j);
+	}
+
+	public static Object effacePerso(Joueur j)
+	{
+		// visuPerso(j);
+		// à optimiser pour la saisie du perso à supprimer
+		System.out.println("quelle perso effacer ?");
+		final int totalperso = j.getjListe2persos().size();
+		int i;
+		for (i = 0; i < totalperso; i++)
+		{
+			System.out.println(i + "." + " nom: " + j.getjListe2persos().get(i).getNom() + "classe: " + j.getjListe2persos().get(i).getClasse() + "level: " + j.getjListe2persos().get(i).getPointdeVie());
+		}
+		final String ab = Menu.choixTxt("tape le numero correspondant au perso");
+		final boolean isnombre = ab.matches("^[0-9 ]$");
+		if (isnombre == false || ab == null || ab.isEmpty() || ab.contains(" "))
+		{
+			System.out.println("mauvaise saisie");
+			return effacePerso(j);
+		}
+		if (Integer.parseInt(ab) <= i)
+		{
+
+			System.out.println("es-tu sur de vouloir supprimer: " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + " ?");
+			final String e = Menu.choixTxt("1.oui 2.non ");
+			// a dev a reprendre
+			if (e.equals("1"))
+			{
+				System.out.println("suppression de " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom());
+			}
+			else
+			{
+				System.out.println("perso " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + "guardé");
+			}
+			return MenuPerso.creationPersoMenu(j);
+		}
+		else
+		{
+			System.out.println("perso " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + "guardé");
+			return effacePerso(j);
+		}
+
+		// {
+		// Constante.LOGJoueurService.info("erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace d'au moins 3 caractères et un max de
+		// 20");
+		// return effacePerso(j);
+		// }
+		// else
+		// {
+		// final int abc = Integer.parseInt(ab);
+		// if (abc == i)
+		// {
+		// System.out.println("es-tu sur de vouloir supprimer: " + j.getjListe2persos().get(i).getNom() + " ?");
+		// final String e = Menu.choixTxt("1.oui 2.non ");
+		// if (e.equals(1))
+		// {
+		// System.out.println("perso: " + j.getjListe2persos().get(i).getNom() + "supprimé");
+		// }
+		// else
+		// {
+		// System.out.println("perso: " + j.getjListe2persos().get(i).getNom() + "guardé");
+		// }
+		// }
+		// else
+		// {
+		// System.out.println("mauvaise saisie, recommence");
+		// return effacePerso(j);
+		// }
+		// }
+	}
+
 	// override
 	// tostring
 }

@@ -40,6 +40,7 @@ public class Menu {
 			j.setIdentifiant(JoueurService.recupInfoCompteJoueur().getIdentifiant());
 			j.setMail(JoueurService.recupInfoCompteJoueur().getMail());
 			j.setMotDePasse(JoueurService.recupInfoCompteJoueur().getMotDePasse());
+			j.setjListe2persos(JoueurService.recupInfoCompteJoueur().getjListe2persos());
 		}
 		else
 		{
@@ -71,7 +72,7 @@ public class Menu {
 			quitterJeu(j);
 			break;
 		case "6":
-			MenuTest01.testLogger(j);
+			MenuTest01.compareStringInt();
 			break;
 		default:
 			System.out.println("erreur de saisie, choisir un nombre");
@@ -123,7 +124,7 @@ public class Menu {
 	 */
 	public static void nouvellePartie(Joueur j)
 	{
-		final String c = choixTxt("1.Création d'un perso  2.???  5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
+		final String c = choixTxt("1.Gestion des persos  2. adefinir   5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
 		switch (c)
 		{
 		case "1":

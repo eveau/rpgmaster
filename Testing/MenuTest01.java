@@ -26,6 +26,63 @@ public class MenuTest01 {
 		Constante.LOGSyService.severe("message severe");
 		Menu.general(j);
 	}
+
+	public static void compareStringInt()
+	{
+		final String e = Menu.choixTxt("1.oui 2.non ");
+
+		if (e.equals("1"))
+		{
+			System.out.println("e.equals(\"1\") vrai)");
+		}
+		else
+		{
+			System.out.println("e.equals(\"1\") faux)");
+		}
+		if (e.equals(1))
+		{
+			System.out.println("e.equals(1) vrai)");
+		}
+		else
+		{
+			System.out.println("e.equals(1) faux)");
+		}
+
+		if (e.contentEquals("1"))
+		{
+			System.out.println("e.contentEquals(\"1\") vrai)");
+		}
+		else
+		{
+			System.out.println("e.contentEquals(\"1\") faux)");
+		}
+		// if (Integer.parseInt(e) == 1)
+		// {
+		// System.out.println("Integer.parseInt(e)==1 vrai)");
+		// }
+		// else
+		// {
+		// System.out.println("Integer.parseInt(e)==1 faux)");
+		// }
+
+		if (e == "1")
+		{
+			System.out.println("e==\"1\") vrai)");
+		}
+		else
+		{
+			System.out.println("e==\"1\") faux)");
+		}
+		if (e == String.valueOf(1))
+		{
+			System.out.println("e == String.valueOf(1) vrai)");
+		}
+		else
+		{
+			System.out.println("e == String.valueOf(1) faux)");
+		}
+
+	}
 	// override
 
 	// tostring

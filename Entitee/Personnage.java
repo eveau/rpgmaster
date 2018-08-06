@@ -118,8 +118,8 @@ public class Personnage implements Serializable {
 	@Override
 	public String toString()
 	{
-		return "Personnage [nom=" + nom + ", classe=" + classe + ", caracteristiques=" + caracteristiques + ", inventaire=" + inventaire + ", sac=" + sac + ", aspect=" + aspect + ", genre=" + genre + ", pointdeVie="
-				+ pointdeVie + ", endurance=" + endurance + ", pointMagie=" + pointMagie + ", pId=" + pId + "]";
+		return "\nPersonnage [nom=" + nom + ", classe=" + classe + ", caracteristiques=" + caracteristiques + ", inventaire=" + inventaire + ", sac=" + sac + ", aspect=" + aspect + ", genre=" + genre + ", pointdeVie="
+				+ pointdeVie + ", endurance=" + endurance + ", pointMagie=" + pointMagie + ", pId=" + pId + "]\n";
 	}
 
 	// methodes de classe
