@@ -31,7 +31,7 @@ public class JoueurService {
 
 	// methodes de classe
 	/**
-	 * @param j.set__
+	 * @param j.set
 	 * @param creerFichierJoueur
 	 * @param EcritureFichierJoueur
 	 *            <br/>
@@ -47,7 +47,7 @@ public class JoueurService {
 		final Joueur j = new Joueur();
 		j.setIdentifiant(verifIdent());
 		j.setMail(verifMail());
-		j.setMotDePasse(verifmdp());
+		j.setMotDePasse(verifmdp((short) 1));
 		// pb si first time
 		j.setIsidentifie(false);
 		// creation du fichier
@@ -69,34 +69,48 @@ public class JoueurService {
 			// System.out.println( "erreur de saisie prenom\n saisir que des
 			// lettres avec chiffres sans espace d'au moins 3 caractères et un
 			// max de 20");
-			verifIdent();
+			return verifIdent();
 		}
 		return ident;
 
 	}
 
-	private static String verifMail()
+	public static String verifMail()
 	{
-		final String mail = Menu.choixTxt("Saisir l'email du joueur");
+		final String mail;
+		mail = Menu.choixTxt("Saisir l'email du joueur");
 		final boolean isMailValid = mail.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$");
 		if (!isMailValid)
 		{
-			// branche dev tester le Constante.LOGJoueurService.info("msg")
 			System.out.println("erreur de saisie mail\n saisir que des lettres avec chiffres sans espace avec l'@");
-			verifMail();
+			return verifMail();
 		}
 		return mail;
 	}
 
-	public static String verifmdp()
+	public static String verifmdp(short n)
 	{
-		final String mdp = Menu.choixTxt("Saisir le mot de passe du joueur");
+		String mdp = "                   ";
+		switch (n)
+		{
+		case 1:
+			mdp = Menu.choixTxt("Saisir le mot de passe du joueur");
+			break;
+		case 2:
+			mdp = Menu.choixTxt("Saisir l'ancien mot de passe du joueur");
+			break;
+		case 3:
+			mdp = Menu.choixTxt("Saisir le  nouveau de passe du joueur");
+			break;
+		default:
+			Constante.LOGJoueurService.warning("n est null ou n'a pas de valeur normal ce qui ne devrait jamais arrivé");
+			break;
+		}
 		final boolean hasNonAlpha = mdp.matches("^.*[^a-zA-Z0-9 ].*$");
 		if (hasNonAlpha == true || mdp == null || mdp.isEmpty() || mdp.length() < 3 || mdp.length() > 20 || mdp.contains(" "))
 		{
-			// branche dev tester le Constante.LOGJoueurService.info("msg")
 			System.out.println("erreur de saisie de mot de passe\n saisir que des lettres avec chiffres sans espace");
-			verifmdp();
+			return verifmdp(n);
 		}
 		return mdp;
 	}
@@ -124,7 +138,7 @@ public class JoueurService {
 	 *            écrit des données dans le fichier joueur bin 0.5<br/>
 	 * @author baboulou
 	 */
-	private static void EcritureFichierJoueur(Joueur j)
+	public static void EcritureFichierJoueur(Joueur j)
 	{
 		try
 		{
@@ -203,7 +217,7 @@ public class JoueurService {
 	private static void saisieIdentificationJoueur(Joueur j)
 	{
 		j.setIdentifiant(JoueurService.verifIdent());
-		j.setMotDePasse(JoueurService.verifmdp());
+		j.setMotDePasse(JoueurService.verifmdp((short) 1));
 
 	}
 
@@ -300,7 +314,7 @@ public class JoueurService {
 	 *            recupére les data du fichier joueur<br/>
 	 *            compare si le nom du fichier correspond à celui en memoire active du @param j
 	 */
-	private static void saveisIdentfileJ(Joueur j)
+	public static void saveisIdentfileJ(Joueur j)
 	{
 		final Joueur tmp = recupTotJoueur();
 		tmp.setIsidentifie(j.isIsidentifie());
@@ -319,7 +333,7 @@ public class JoueurService {
 	 *            Normalement, on devrait modifier le compte Joueur uniquement à la demande du joueur
 	 * @param j
 	 */
-	public static void modifCompteJoueur(Joueur j)
+	public static void modifFichierCpteJoueur(Joueur j)
 	{
 		// a dev creer un menu qui demande de modifier les elements
 		// j.setIdentifiant("nouvel identifiant fourni");
@@ -361,6 +375,11 @@ public class JoueurService {
 		tmp.setMotDePasse(recupInfoCompteJoueur().getMotDePasse());
 		tmp.setIsidentifie(recupInfoCompteJoueur().isIsidentifie());
 		return tmp;
+	}
+
+	public static void modifCpteJoueur()
+	{
+
 	}
 	// override
 

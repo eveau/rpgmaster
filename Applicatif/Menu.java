@@ -36,14 +36,14 @@ public class Menu {
 		if (JoueurService.recupInfoCompteJoueur().isIsidentifie())
 		{
 			// a dev - le joueur est logué
-			a = "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter 5.isfichierJoueurExist";
+			a = "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter";
 			j.setIdentifiant(JoueurService.recupInfoCompteJoueur().getIdentifiant());
 			j.setMail(JoueurService.recupInfoCompteJoueur().getMail());
 			j.setMotDePasse(JoueurService.recupInfoCompteJoueur().getMotDePasse());
 		}
 		else
 		{
-			a = "1.Se loguer 6.menuTest 4.Quitter 5.isfichierJoueurExist";
+			a = "1.Se loguer 6.menuTest 4.Quitter";
 		}
 
 		final String c = choixTxt(a);
@@ -62,16 +62,13 @@ public class Menu {
 			break;
 		case "2":
 			System.out.println("vers Modifier son compte Joueur");
-			general(j);
+			MenuJoueur.menuModifduJoueur(j);
 			break;
 		case "3":
 			lancerJeu(j);
 			break;
 		case "4":
 			quitterJeu(j);
-			break;
-		case "5":
-			ifechier();
 			break;
 		case "6":
 			MenuTest01.testLogger(j);
