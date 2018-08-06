@@ -374,6 +374,7 @@ public class JoueurService {
 		tmp.setMail(recupInfoCompteJoueur().getMail());
 		tmp.setMotDePasse(recupInfoCompteJoueur().getMotDePasse());
 		tmp.setIsidentifie(recupInfoCompteJoueur().isIsidentifie());
+		tmp.setjListe2persos(recupInfoCompteJoueur().getjListe2persos());
 		return tmp;
 	}
 

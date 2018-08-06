@@ -29,9 +29,9 @@ public class Constante {
 	public final static String fichier1Partie = chemindirPartie + "unepartie.bin";
 	public final static String listeDeParties = chemindirPartie + "liste2parties.bin";
 	/**
+	 * acces à compteJoueur.bin<br/>
+	 * 
 	 * @author baboulou
-	 * @param acces
-	 *            à compteJoueur.bin<br/>
 	 */
 	public final static String fichierJoueur = chemindirJeu + "compteJoueur.bin";
 

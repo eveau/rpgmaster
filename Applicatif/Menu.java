@@ -12,7 +12,7 @@ import Testing.MenuTest01;
 /**
  * Menus du jeu<br/>
  * version Developpement 0.5<br/>
- * 
+ *
  * @author baboulou
  */
 public class Menu {
@@ -166,7 +166,7 @@ public class Menu {
 	/**
 	 * Saisie d'un nombre
 	 */
-	public static short choixNb(String txt)
+	private static short choixNb(String txt)
 	{
 		// bug si saisie non numérique solved , ne forcer que du String in fine ?
 		final Scanner sc = new Scanner(System.in);

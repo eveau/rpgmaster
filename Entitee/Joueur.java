@@ -8,7 +8,7 @@ import java.util.List;
  * Un joueur peut avoir plusieurs persos. <br/>
  * Chaque partie contient 1 seul perso.<br/>
  * version Developpement 0.5<br/>
- * 
+ *
  * @author baboulou
  */
 public class Joueur implements Serializable {
@@ -16,6 +16,7 @@ public class Joueur implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String identifiant, mail, motDePasse;
 	boolean isidentifie = false;
+	int jid;
 	// ArrayList<Personnage> vListe2persos;
 	List<Personnage> jListe2persos;
 
@@ -66,10 +67,30 @@ public class Joueur implements Serializable {
 		this.isidentifie = isidentifie;
 	}
 
+	public List<Personnage> getjListe2persos()
+	{
+		return jListe2persos;
+	}
+
+	public void setjListe2persos(List<Personnage> jListe2persos)
+	{
+		this.jListe2persos = jListe2persos;
+	}
+
+	public int getJid()
+	{
+		return jid;
+	}
+
+	public void setJid(int id)
+	{
+		this.jid = id;
+	}
+
 	@Override
 	public String toString()
 	{
-		return "Joueur [identifiant=" + identifiant + ", mail=" + mail + ", motDePasse=" + motDePasse + ", isidentifie=" + isidentifie + ", jListe2persos=" + jListe2persos + "]";
+		return "Joueur [jid= " + jid + ", identifiant=" + identifiant + ", mail=" + mail + ", motDePasse=" + motDePasse + ", isidentifie=" + isidentifie + ", jListe2persos=" + jListe2persos + "]";
 	}
 
 	// methodes de classe
