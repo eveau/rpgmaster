@@ -7,7 +7,7 @@ import Services.Persoservice;
  * @author baboulou
  * @param Menus
  *            du perso <br/>
- *            version de Testing 0.5.1<br/>
+ *            version Developpement 0.5<br/>
  */
 public class MenuPerso {
 	// propriétés de classe
@@ -25,32 +25,32 @@ public class MenuPerso {
 	 */
 	public static void creationPersoMenu(Joueur j)
 	{
-		final short c = Menu.choixNb("1.Création d'un perso  2.Charger un perso 3.Modifier un perso 4.Sauvegarder le perso 5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
+		final String c = Menu.choixTxt("1.Création d'un perso  2.Charger un perso 3.Modifier un perso 4.Sauvegarder le perso 5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
 		switch (c)
 		{
-		case 1:
+		case "1":
 			Persoservice.creationPerso(j);
 			break;
-		case 2:
+		case "2":
 			System.out.println("vers PersoService.charger1Perso ();");
 			creationPersoMenu(j);
 			break;
-		case 3:
+		case "3":
 			System.out.println("vers PersoService.modifier1Perso ();");
 			creationPersoMenu(j);
 			break;
-		case 4:
+		case "4":
 			System.out.println("vers PersoService.save1Perso ();");
 			creationPersoMenu(j);
 			break;
-		case 5:
+		case "5":
 			System.out.println("vers PartieService.lancerPartie()");
 			creationPersoMenu(j);
 			break;
-		case 6:
+		case "6":
 			Menu.quitterJeu(j);
 			break;
-		case 7:
+		case "7":
 			Menu.general(j);
 			break;
 		default:

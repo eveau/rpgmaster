@@ -12,7 +12,7 @@ import Services.JoueurService;
  * @author baboulou
  * @param Menus
  *            du jeu<br/>
- *            version de Testing<br/>
+ *            version Developpement 0.5<br/>
  */
 public class Menu {
 	// propriétés de classe
@@ -51,10 +51,10 @@ public class Menu {
 			a = "1.Se loguer  4.Quitter 5.isfichierJoueurExist";
 		}
 
-		final short c = choixNb(a);
+		final String c = choixTxt(a);
 		switch (c)
 		{
-		case 1:
+		case "1":
 			if (JoueurService.recupInfoCompteJoueur().isIsidentifie())
 			{
 				JoueurService.logoff(j);
@@ -65,17 +65,17 @@ public class Menu {
 				JoueurService.connection();
 			}
 			break;
-		case 2:
+		case "2":
 			System.out.println("vers Modifier son compte Joueur");
 			general(j);
 			break;
-		case 3:
+		case "3":
 			lancerJeu(j);
 			break;
-		case 4:
+		case "4":
 			quitterJeu(j);
 			break;
-		case 5:
+		case "5":
 			ifechier();
 			break;
 		default:
@@ -89,32 +89,32 @@ public class Menu {
 	 */
 	public static void lancerJeu(Joueur j)
 	{
-		final short c = choixNb("1.Nouvelle partie 2.Continuer 3.Charger partie 4.Sauvegarder 5.quitter Partie 6. Quitter le jeu  7.retour menu general");
+		final String c = choixTxt("1.Nouvelle partie 2.Continuer 3.Charger partie 4.Sauvegarder 5.quitter Partie 6. Quitter le jeu  7.retour menu general");
 		switch (c)
 		{
-		case 1:
+		case "1":
 			nouvellePartie(j);
 			break;
-		case 2:
+		case "2":
 			System.out.println("vers PartieService.continuerPartie();");
 			lancerJeu(j);
 			break;
-		case 3:
+		case "3":
 			System.out.println("vers PartieService.chargerPartie()");
 			lancerJeu(j);
 			break;
-		case 4:
+		case "4":
 			System.out.println("vers PartieService.sauvegarderPartie()");
 			lancerJeu(j);
 			break;
-		case 5:
+		case "5":
 			System.out.println("vers PartieService.quitterPartie()");
 			lancerJeu(j);
 			break;
-		case 6:
+		case "6":
 			quitterJeu(j);
 			break;
-		case 7:
+		case "7":
 			general(j);
 			break;
 		default:
@@ -128,24 +128,24 @@ public class Menu {
 	 */
 	public static void nouvellePartie(Joueur j)
 	{
-		final short c = choixNb("1.Création d'un perso  2.???  5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
+		final String c = choixTxt("1.Création d'un perso  2.???  5.Lancer la partie 6. Quitter le jeu  7.retour menu general");
 		switch (c)
 		{
-		case 1:
+		case "1":
 			MenuPerso.creationPersoMenu(j);
 			break;
-		case 2:
+		case "2":
 			System.out.println("vers ???");
 			nouvellePartie(j);
 			break;
-		case 5:
+		case "5":
 			System.out.println("vers PartieService.lancerPartie()");
 			nouvellePartie(j);
 			break;
-		case 6:
+		case "6":
 			quitterJeu(j);
 			break;
-		case 7:
+		case "7":
 			general(j);
 			break;
 		default:
@@ -159,13 +159,13 @@ public class Menu {
 	 */
 	public static String choixTxt(String txt)
 	{
+		// saisie plus safe en String
 		// dev voir ce qui allege le mieux pour sc.close
 		final Scanner sc = new Scanner(System.in);
 		System.out.println(txt);
 		// pour dev tester un return sc.nextLine();
-		String choix2 = "aé";
-		choix2 = sc.nextLine();
-		return choix2;
+		// final String choix2 = sc.nextLine();
+		return sc.nextLine();
 	}
 
 	/**
@@ -201,6 +201,7 @@ public class Menu {
 	 */
 	public static void quitterJeu(Joueur j)
 	{
+		System.out.println("j.isIsidentifie(): " + j.isIsidentifie());
 		if (j.isIsidentifie())
 		{
 			JoueurService.logoff(j);

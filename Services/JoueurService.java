@@ -17,7 +17,7 @@ import Entitee.Joueur;
  * @author baboulou
  * @param Service
  *            controleur<br/>
- *            version de Testing 0.5.1<br/>
+ *            version Developpement 0.5<br/>
  */
 public class JoueurService {
 	// propriétés de classe
@@ -176,12 +176,8 @@ public class JoueurService {
 		{
 			System.out.println("identification réussie");
 			j.setIsidentifie(true);
-			// solved
-			// ecriture a ce moment de l'etat identifie ? oui car on se base sur
-			// le fichier
 			// methode ecriture du statut identifie dans le fichier a developper
 			saveisIdentfileJ(j);
-
 			// modifPourIsidentifie(j);
 			// modifCompteJoueur(j);
 			// EcritureFichierJoueur(j);
@@ -189,15 +185,15 @@ public class JoueurService {
 		else
 		{
 			System.out.println("identification échouée");
-			final short c = Menu.choixNb("se loguer plus tard? 1.oui 2.non");
+			final String c = Menu.choixTxt("se loguer plus tard? 1.oui 2.non");
 			switch (c)
 			{
-			case 1:
+			case "1":
 				j.setIsidentifie(false);
 				// pour dev a verifier le try catch IOException unreachable try
 				Menu.general(j);
 				break;
-			case 2:
+			case "2":
 				login(j);
 				break;
 			default:
@@ -277,8 +273,6 @@ public class JoueurService {
 		// 3. si ok on ecrit dans le fichier
 		// 4. si non on ne fait rien et on quitte le logoff.
 		// EcritureFichierJoueur(j);
-		System.out.println("pb a l'ecriture du fichier pour sauvegarder saveisIdentfileJ");
-
 	}
 
 	// Pour dev: il y a 3 versions de la méthode modifCompteJoueur()

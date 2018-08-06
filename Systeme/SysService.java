@@ -8,7 +8,7 @@ import Commun.Constante;
  * @author baboulou
  * @param Opération
  *            sur fichiers systèmes<br/>
- *            version de Testing 0.5.1<br/>
+ *            version Developpement 0.5<br/>
  */
 public class SysService {
 	// propriétés de classe

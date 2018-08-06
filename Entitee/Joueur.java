@@ -5,7 +5,8 @@ import java.util.List;
 
 /**
  * Un Joueur peut avoir plusieurs parties.<br/>
- * Version Developpement Un joueur peut avoir plusieurs persos. Chaque partie contient 1 seul perso.<br/>
+ * version Developpement 0.5<br/>
+ * Un joueur peut avoir plusieurs persos. Chaque partie contient 1 seul perso.<br/>
  *
  * @author baboulou
  *
