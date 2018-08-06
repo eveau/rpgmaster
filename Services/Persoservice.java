@@ -2,11 +2,12 @@ package Services;
 
 import Applicatif.MenuPerso;
 import Entitee.Joueur;
+import Entitee.Personnage;
 
 /**
  * Méthodes concernant le Personnage<br/>
  * version Developpement 0.5<br/>
- * 
+ *
  * @author baboulou
  */
 public class Persoservice {
@@ -47,7 +48,7 @@ public class Persoservice {
 		// a dev
 		System.out.println("en cours de dev");
 		// nouvel entite Personnage...
-		// final Personnage p = new Personnage();
+		final Personnage p = new Personnage();
 		// ...à lier à une entite joueur
 		// p.setJId(j);
 		// // 1.demander le nom
