@@ -347,65 +347,39 @@ public class Persoservice {
 		int i;
 		for (i = 0; i < totalperso; i++)
 		{
-			System.out.println(i + "." + " nom: " + j.getjListe2persos().get(i).getNom() + "classe: " + j.getjListe2persos().get(i).getClasse() + "level: " + j.getjListe2persos().get(i).getPointdeVie());
+			System.out.println(i + "." + " nom: " + j.getjListe2persos().get(i).getNom() + " classe: " + j.getjListe2persos().get(i).getClasse() + " level: " + j.getjListe2persos().get(i).getPointdeVie());
 		}
-		final String ab = Menu.choixTxt("tape le numero correspondant au perso");
-		final boolean isnombre = ab.matches("^[0-9 ]$");
-		if (isnombre == false || ab == null || ab.isEmpty() || ab.contains(" "))
+		final String ab = Menu.choixTxt("tape le nom correspondant au perso");
+		final boolean hasNonAlpha = ab.matches("^.*[^a-zA-Z0-9 ].*$");
+		if (hasNonAlpha || ab == null || ab.isEmpty() || ab.contains(" "))
 		{
-			System.out.println("mauvaise saisie");
+			System.out.println("erreur de saisie, saisir correctement le nom du perso");
 			return effacePerso(j);
-		}
-		if (Integer.parseInt(ab) <= i)
-		{
-
-			System.out.println("es-tu sur de vouloir supprimer: " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + " ?");
-			final String e = Menu.choixTxt("1.oui 2.non ");
-			// a dev a reprendre
-			if (e.equals("1"))
-			{
-				System.out.println("suppression de " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom());
-			}
-			else
-			{
-				System.out.println("perso " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + "guardé");
-			}
-			return MenuPerso.creationPersoMenu(j);
 		}
 		else
 		{
-			System.out.println("perso " + j.getjListe2persos().get(Integer.parseInt(ab)).getNom() + "guardé");
-			return effacePerso(j);
+			// methode for bouclée
+			for (int i2 = 0; i2 < totalperso; i2++)
+			{
+				if (ab.equals(j.getjListe2persos().get(i2).getNom()))
+				{
+					final String tx = Menu.choixTxt("etes vous sur de supprimer " + j.getjListe2persos().get(i2).getNom());
+					if (tx.equals("1") || tx.equals("oui"))
+					{
+						System.out.println("suppression de " + j.getjListe2persos().get(i2).getNom());
+					}
+					else
+					{
+						System.out.println("perso " + j.getjListe2persos().get(i2).getNom() + " sauvegardé");
+					}
+					return MenuPerso.creationPersoMenu(j);
+				}
+			}
+			System.out.println("aucun perso trouvé avec: " + ab);
 		}
+		return MenuPerso.creationPersoMenu(j);
 
-		// {
-		// Constante.LOGJoueurService.info("erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace d'au moins 3 caractères et un max de
-		// 20");
-		// return effacePerso(j);
-		// }
-		// else
-		// {
-		// final int abc = Integer.parseInt(ab);
-		// if (abc == i)
-		// {
-		// System.out.println("es-tu sur de vouloir supprimer: " + j.getjListe2persos().get(i).getNom() + " ?");
-		// final String e = Menu.choixTxt("1.oui 2.non ");
-		// if (e.equals(1))
-		// {
-		// System.out.println("perso: " + j.getjListe2persos().get(i).getNom() + "supprimé");
-		// }
-		// else
-		// {
-		// System.out.println("perso: " + j.getjListe2persos().get(i).getNom() + "guardé");
-		// }
-		// }
-		// else
-		// {
-		// System.out.println("mauvaise saisie, recommence");
-		// return effacePerso(j);
-		// }
-		// }
-	}
+	}// fin de effacePerso()
 
 	// override
 	// tostring
