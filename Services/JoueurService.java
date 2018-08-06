@@ -143,19 +143,14 @@ public class JoueurService {
 		final boolean isfichierjoueurexist = new File(Constante.fichierJoueur).exists();
 		if (!isfichierjoueurexist)
 		{
-			// lancement de creation de compte joueur. Puis on cree le fichier
-			// Joueur.
+			// lancement de creation de compte joueur. Puis on cree le fichier Joueur.
 			JoueurService.creationCompteJoueur();
 		}
 		final Joueur j = new Joueur();
-		// login, delogue avant si perte de conection qui a laisssé a identifé true
+		// login, delogue avant si perte de connection qui a laisssé identifé à true
 		JoueurService.logoff(j);
 		JoueurService.login(j);
 		Menu.general(j);
-		/*
-		 * pour dev a verifier le try catch IOException unreachable try { Menu.general(); } catch (final IOException e) { Constante.LOGJoueurService.
-		 * warning("erreur de chargement du menu general"); Constante.LOGJoueurService.finest(Constante.msge(e)); }
-		 */
 	}
 
 	public static void login(Joueur j)

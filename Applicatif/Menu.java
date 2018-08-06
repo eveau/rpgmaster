@@ -211,6 +211,7 @@ public class Menu {
 		System.exit(0);
 	}
 
+	// a retirer a la fin
 	public static void ifechier()
 	{
 		final String msg = System.getProperty("user.dir") + "\\jeu\\compteJoueur.bin";
