@@ -16,7 +16,8 @@ public class Joueur implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String identifiant, mail, motDePasse;
 	boolean isidentifie = false;
-	int jid;
+	// genere un id unique
+	private int jid = (int) (Math.floor(Math.random() * 100));
 	// ArrayList<Personnage> vListe2persos;
 	List<Personnage> jListe2persos;
 
@@ -25,6 +26,8 @@ public class Joueur implements Serializable {
 	public Joueur() {
 
 	}
+
+	// methodes de classe
 
 	// getter and setter
 	public String getIdentifiant()
@@ -92,8 +95,6 @@ public class Joueur implements Serializable {
 	{
 		return "Joueur [jid= " + jid + ", identifiant=" + identifiant + ", mail=" + mail + ", motDePasse=" + motDePasse + ", isidentifie=" + isidentifie + ", jListe2persos=" + jListe2persos + "]";
 	}
-
-	// methodes de classe
 
 	// override
 

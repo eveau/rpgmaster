@@ -215,14 +215,16 @@ public class Persoservice {
 		// enregistre dans joueur en memoire
 		// pb npe
 		System.out.println("Perso actuelle: " + p.toString());
-		final List<Personnage> pl = new ArrayList<>();
-		j.setjListe2persos(pl);
+
 		if (j.getjListe2persos() != null)
 		{
+
 			j.getjListe2persos().add(p);
 		}
 		else
 		{
+			final List<Personnage> pl = new ArrayList<>();
+			j.setjListe2persos(pl);
 			j.setjListe2persos((List<Personnage>) p);
 
 		}

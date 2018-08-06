@@ -50,6 +50,7 @@ public class JoueurService {
 		j.setMotDePasse(verifmdp((short) 1));
 		// pb si first time
 		j.setIsidentifie(false);
+
 		// creation du fichier
 		creerFichierJoueur();
 		Menu.ifechier();
@@ -375,6 +376,7 @@ public class JoueurService {
 		tmp.setMotDePasse(recupInfoCompteJoueur().getMotDePasse());
 		tmp.setIsidentifie(recupInfoCompteJoueur().isIsidentifie());
 		tmp.setjListe2persos(recupInfoCompteJoueur().getjListe2persos());
+		tmp.setJid(recupInfoCompteJoueur().getJid());
 		return tmp;
 	}
 
