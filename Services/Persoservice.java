@@ -331,9 +331,29 @@ public class Persoservice {
 		}
 	}
 
-	public static Object visuPerso(Joueur j)
+	public static Object visuListePerso(Joueur j, short n)
 	{
-		System.out.println(" liste actuelle des persos: " + j.getjListe2persos().toString());
+		final int totalperso = j.getjListe2persos().size();
+		switch (n)
+		{
+		case 1:
+			for (int i = 0; i < totalperso; i++)
+			{
+				System.out.println("Vue courte de la liste des perso: " + i + "." + " nom: " + j.getjListe2persos().get(i).getNom());
+			}
+			break;
+		case 2:
+			System.out.println("Vue détaillée de la liste actuelle des persos: " + j.getjListe2persos().toString());
+			break;
+
+		default:
+			for (int i = 0; i < totalperso; i++)
+			{
+				System.out.println("Vue normale de la liste des perso: " + i + "." + " nom: " + j.getjListe2persos().get(i).getNom() + " classe: " + j.getjListe2persos().get(i).getClasse() + " level: "
+						+ j.getjListe2persos().get(i).getPointdeVie());
+			}
+			break;
+		}
 
 		return MenuPerso.creationPersoMenu(j);
 	}

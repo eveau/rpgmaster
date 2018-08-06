@@ -34,7 +34,7 @@ public class MenuPerso {
 		case "1":
 			return Persoservice.creationPerso(j);
 		case "2":
-			return Persoservice.visuPerso(j);
+			return visuPerso(j);
 		case "3":
 			System.out.println("vers PersoService.charge1Perso ();");
 			return creationPersoMenu(j);
@@ -59,9 +59,36 @@ public class MenuPerso {
 			System.out.println("erreur de saisie, choisir un nombre");
 			return creationPersoMenu(j);
 		}
-		return c;
+		return creationPersoMenu(j);
 	}
 
+	public static Object visuPerso(Joueur j)
+	{
+		final String c = Menu.choixTxt("1.Visu courte 2.Normale 3.Détaillée  4.Retour au menu Gestion de perso 7.retour menu general 8. Quitter le jeu ");
+		switch (c)
+		{
+		case "1":
+			return Persoservice.visuListePerso(j, (short) 1);
+		case "2":
+			return Persoservice.visuListePerso(j, (short) 0);
+		case "3":
+			return Persoservice.visuListePerso(j, (short) 2);
+		case "4":
+			return creationPersoMenu(j);
+		case "7":
+			// a dev ajouter un return
+			Menu.general(j);
+			break;
+		case "8":
+			// a dev ajouter un return
+			Menu.quitterJeu(j);
+			break;
+		default:
+			System.out.println("erreur de saisie, choisir un nombre");
+			return visuPerso(j);
+		}
+		return visuPerso(j);
+	}
 	// override
 
 	// tostring
