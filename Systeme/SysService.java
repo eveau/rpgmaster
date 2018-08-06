@@ -21,6 +21,15 @@ public class SysService {
 	// getter and setter
 
 	// methodes de classe
+	/**
+	 * @param chemindirJeu
+	 * @param chemindirPartie
+	 * @param chemindirPerso
+	 *            <br/>
+	 * 			crée les répertoires de base
+	 *
+	 * @author baboulou
+	 */
 	public static void creationdesRepertoires()
 	{
 		final String[] tabRepertoire = { Constante.chemindirJeu, Constante.chemindirPartie, Constante.chemindirPerso };

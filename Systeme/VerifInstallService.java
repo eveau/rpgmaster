@@ -7,10 +7,10 @@ import Commun.Constante;
 import Services.JoueurService;
 
 /**
- * @author baboulou
  * @param Pour
  *            inititialisation de départ au démarrage<br/>
  *            version Developpement 0.5<br/>
+ * @author baboulou
  */
 public class VerifInstallService {
 	// propriétés de classe
@@ -23,6 +23,11 @@ public class VerifInstallService {
 	// getter and setter
 
 	// methodes de classe
+	/**
+	 * verifie la création des répertoires puis lance la création du compte joueur que le joueur a une connection autorisée<br/>
+	 *
+	 * @author baboulou
+	 */
 	public static void verifInitRep()
 	{
 		if (!new File(Constante.repertoireJeu).exists())

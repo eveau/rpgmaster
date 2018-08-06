@@ -5,11 +5,11 @@ import java.util.List;
 
 /**
  * Un Joueur peut avoir plusieurs parties.<br/>
+ * Un joueur peut avoir plusieurs persos. <br/>
+ * Chaque partie contient 1 seul perso.<br/>
  * version Developpement 0.5<br/>
- * Un joueur peut avoir plusieurs persos. Chaque partie contient 1 seul perso.<br/>
- *
+ * 
  * @author baboulou
- *
  */
 public class Joueur implements Serializable {
 	// propriétés de classe

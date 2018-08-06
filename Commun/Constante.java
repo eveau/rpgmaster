@@ -28,6 +28,11 @@ public class Constante {
 	public final static String listeDePersos = chemindirPerso + "liste2persos.bin";
 	public final static String fichier1Partie = chemindirPartie + "unepartie.bin";
 	public final static String listeDeParties = chemindirPartie + "liste2parties.bin";
+	/**
+	 * @author baboulou
+	 * @param acces
+	 *            à compteJoueur.bin<br/>
+	 */
 	public final static String fichierJoueur = chemindirJeu + "compteJoueur.bin";
 
 	public static final Logger LOGSyService = Logger.getLogger(SysService.class.getName());
@@ -45,6 +50,7 @@ public class Constante {
 	// getter and setter
 
 	// methodes de classe
+	// a dev qu'en faire? supprimer ou pas ?
 	public static String msge(Exception e)
 	{
 		return "erreur: " + e.getMessage() + " a cause de: " + e.getCause();

@@ -4,10 +4,10 @@ import Applicatif.MenuPerso;
 import Entitee.Joueur;
 
 /**
+ * Méthodes concernant le Personnage<br/>
+ * version Developpement 0.5<br/>
+ * 
  * @author baboulou
- * @param Méthode
- *            concernant le Personnage<br/>
- *            version Developpement 0.5<br/>
  */
 public class Persoservice {
 	// propriétés de classe
@@ -20,6 +20,20 @@ public class Persoservice {
 	// getter and setter
 
 	// methodes de classe
+	/**
+	 *
+	 * @param nom
+	 * @param genre
+	 * @param classe
+	 * @param caracteristiques
+	 * @param l'aspect
+	 * @param inventaire
+	 * @param jListe2persos
+	 * @param ecritureFichierPerso
+	 *            <br/>
+	 *            crée une fiche Personnage<br/>
+	 * @author baboulou
+	 */
 	public static void creationPerso(Joueur j)
 	{
 		// à developper

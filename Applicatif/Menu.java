@@ -7,6 +7,7 @@ import java.util.Scanner;
 import Commun.Constante;
 import Entitee.Joueur;
 import Services.JoueurService;
+import Testing.MenuTest01;
 
 /**
  * @author baboulou
@@ -30,25 +31,19 @@ public class Menu {
 	 */
 	public static void general(Joueur j)
 	{
-		// DEV a confirmer Pour le nouveau menu à jour
-		/*
-		 * final String a = JoueurService.recupInfoCompteJoueur().isIsidentifie() ? "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter" :
-		 * "1.Se loguer  4.Quitter";
-		 */
 		// final Joueur j = new Joueur();
 		String a = "logueoupas";
 		if (JoueurService.recupInfoCompteJoueur().isIsidentifie())
 		{
 			// a dev - le joueur est logué
 			a = "1.Se deloguer 2.Modifier son compte Joueur 3.lancer le jeu 4.Quitter 5.isfichierJoueurExist";
-
 			j.setIdentifiant(JoueurService.recupInfoCompteJoueur().getIdentifiant());
 			j.setMail(JoueurService.recupInfoCompteJoueur().getMail());
 			j.setMotDePasse(JoueurService.recupInfoCompteJoueur().getMotDePasse());
 		}
 		else
 		{
-			a = "1.Se loguer  4.Quitter 5.isfichierJoueurExist";
+			a = "1.Se loguer 6.menuTest 4.Quitter 5.isfichierJoueurExist";
 		}
 
 		final String c = choixTxt(a);
@@ -77,6 +72,9 @@ public class Menu {
 			break;
 		case "5":
 			ifechier();
+			break;
+		case "6":
+			MenuTest01.testLogger(j);
 			break;
 		default:
 			System.out.println("erreur de saisie, choisir un nombre");
@@ -124,7 +122,7 @@ public class Menu {
 	}
 
 	/**
-	 * Nouvelle Partie,Creation de Perso +création de fichier partie
+	 * Nouvelle Partie, création de Perso +création de fichier partie
 	 */
 	public static void nouvellePartie(Joueur j)
 	{

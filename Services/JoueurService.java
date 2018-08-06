@@ -14,10 +14,10 @@ import Commun.Constante;
 import Entitee.Joueur;
 
 /**
+ * Méthodes liées au compte du joueur ou à ses données<br/>
+ * version Developpement 0.5<br/>
+ *
  * @author baboulou
- * @param Service
- *            controleur<br/>
- *            version Developpement 0.5<br/>
  */
 public class JoueurService {
 	// propriétés de classe
@@ -30,6 +30,14 @@ public class JoueurService {
 	// getter and setter
 
 	// methodes de classe
+	/**
+	 * @param j.set__
+	 * @param creerFichierJoueur
+	 * @param EcritureFichierJoueur
+	 *            <br/>
+	 *            crée le compte du joueur
+	 * @author baboulou
+	 */
 	public static void creationCompteJoueur()
 	{
 		// 1.demander le nom
@@ -93,6 +101,9 @@ public class JoueurService {
 		return mdp;
 	}
 
+	/**
+	 * @author baboulou créer le fichier joueur bin
+	 */
 	private static void creerFichierJoueur()
 	{
 		try
@@ -106,6 +117,13 @@ public class JoueurService {
 		}
 	}
 
+	/**
+	 * @param FileOutputStream,
+	 * @param ObjectOutputStream
+	 *            <br/>
+	 *            écrit des données dans le fichier joueur bin 0.5<br/>
+	 * @author baboulou
+	 */
 	private static void EcritureFichierJoueur(Joueur j)
 	{
 		try
@@ -137,6 +155,15 @@ public class JoueurService {
 
 	}
 
+	/**
+	 * @param isfichierjoueurexist
+	 *            verifie si le fichier joueur existe<br/>
+	 * @param creationCompteJoueur
+	 *            crée le compte joueur sinon<br/>
+	 * @param Login
+	 *            si ok puis accès au menu général
+	 * @author baboulou
+	 */
 	public static void connection()
 	{
 		// le fichierJoueur existe t il?
@@ -153,12 +180,26 @@ public class JoueurService {
 		Menu.general(j);
 	}
 
+	/**
+	 * @param saisieIdentificationJoueur
+	 *            <br/>
+	 * @param isConnexConforme
+	 *            est-ce que le joueur a une connection autorisée<br/>
+	 * @author baboulou
+	 */
 	public static void login(Joueur j)
 	{
 		JoueurService.saisieIdentificationJoueur(j);
 		JoueurService.isConnexConforme(j);
 	}
 
+	/**
+	 * @param verifIdent
+	 *            <br/>
+	 * @param verifmdp
+	 *            <br/>
+	 * @author baboulou
+	 */
 	private static void saisieIdentificationJoueur(Joueur j)
 	{
 		j.setIdentifiant(JoueurService.verifIdent());
@@ -166,6 +207,11 @@ public class JoueurService {
 
 	}
 
+	/**
+	 * @param verifie
+	 *            que le joueur a une connection autorisée<br/>
+	 * @author baboulou
+	 */
 	private static void isConnexConforme(Joueur j)
 	{
 		if (recupInfoCompteJoueur().getIdentifiant().equals(j.getIdentifiant()) && recupInfoCompteJoueur().getMotDePasse().equals(j.getMotDePasse()))
@@ -186,7 +232,6 @@ public class JoueurService {
 			{
 			case "1":
 				j.setIsidentifie(false);
-				// pour dev a verifier le try catch IOException unreachable try
 				Menu.general(j);
 				break;
 			case "2":
@@ -215,7 +260,7 @@ public class JoueurService {
 	}
 
 	/**
-	 * extrait à partir du fichier le joueur versun objet tmp
+	 * extrait à partir du fichier le joueur vers un objet tmp
 	 */
 	public static final Joueur recupInfoCompteJoueur()
 	{
@@ -246,9 +291,14 @@ public class JoueurService {
 	}
 
 	/**
-	 * Enregistrer l'etat is identifié Joueur dans le fichier bin
-	 *
-	 * @param j
+	 * @author baboulou
+	 * @param recupTotJoueur
+	 *            <br/>
+	 * @param EcritureFichierJoueur
+	 * @param isIsidentifie
+	 *            Enregistre l'état is identifié Joueur dans le fichier bin en vérifiant s'il y a un compte associé<br/>
+	 *            recupére les data du fichier joueur<br/>
+	 *            compare si le nom du fichier correspond à celui en memoire active du @param j
 	 */
 	private static void saveisIdentfileJ(Joueur j)
 	{
@@ -258,27 +308,20 @@ public class JoueurService {
 		{
 			EcritureFichierJoueur(tmp);
 		}
-		// solved
-		// a dev verifier si ca ne change pa le mdp ou nom autrement par faille,
-		// oui ca bug, on ne doit ecrire que le statut identifie et uniquement
-		// s'il existe dans le fichier
-		// 1. recupérer les data du fichier joueur
-		// 2. comparer si le nom du fichier correspond a celui en memeoire
-		// active de j
-		// 3. si ok on ecrit dans le fichier
-		// 4. si non on ne fait rien et on quitte le logoff.
-		// EcritureFichierJoueur(j);
 	}
 
 	// Pour dev: il y a 3 versions de la méthode modifCompteJoueur()
 	/**
-	 * Modifier le compte Joueur à la demande du joueur normalement
-	 *
+	 * @param recupTotJoueur
+	 * @param j.set__
+	 * @param EcritureFichierJoueur
+	 *            Inscrit les modifications dans le fichier joueur<br/>
+	 *            Normalement, on devrait modifier le compte Joueur uniquement à la demande du joueur
 	 * @param j
 	 */
 	public static void modifCompteJoueur(Joueur j)
 	{
-		// creer un menu qui demande de modifier les elements
+		// a dev creer un menu qui demande de modifier les elements
 		// j.setIdentifiant("nouvel identifiant fourni");
 		// j.setMail("nouveau mail fourni");
 		// j.setMotDePasse("nouveau mdp fourni");
@@ -291,8 +334,7 @@ public class JoueurService {
 		{
 			tmp.setIdentifiant(j.getIdentifiant());
 		}
-		// pour dev if (!j.getMail().equalsIgnoreCase(tmp.getMail()))
-		// ->pointernull
+		// pour dev if (!j.getMail().equalsIgnoreCase(tmp.getMail())) donne une pointernull
 		if (j.getMail() != tmp.getMail())
 		{
 			tmp.setMail(j.getMail());
@@ -309,7 +351,7 @@ public class JoueurService {
 	}
 
 	/**
-	 * Récuperation des données du Joueur à partir du fichier
+	 * Récuperation des données du Joueur à partir du fichier joueur bin
 	 */
 	public static Joueur recupTotJoueur()
 	{
