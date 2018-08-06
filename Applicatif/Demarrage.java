@@ -7,11 +7,11 @@ import Systeme.VerifInstallService;
 //import Service.JoueurService;
 //import Service.VerifInstallService;
 /**
+ * Appel du Menu General. <br/>
+ * version Developpement 0.5<br/>
+ * Demande et saisit l'entrée de l'utilisateur
+ * 
  * @author baboulou
- * @param Appel
- *            du Menu General. <br/>
- *            version Developpement 0.5<br/>
- *            Demande et saisit l'entrée de l'utilisateur
  */
 public class Demarrage {
 	// propriétés de classe

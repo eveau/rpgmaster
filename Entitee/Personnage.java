@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Personnage version Developpement 0.5<br/>
+ * 
  * @author baboulou
- * @param Personnage
- *            version Developpement 0.5<br/>
  */
 public class Personnage implements Serializable {
 	// propriétés de classe

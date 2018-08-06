@@ -7,9 +7,9 @@ import Commun.Constante;
 import Services.JoueurService;
 
 /**
- * @param Pour
- *            inititialisation de départ au démarrage<br/>
- *            version Developpement 0.5<br/>
+ * Pour inititialisation de départ au démarrage<br/>
+ * version Developpement 0.5<br/>
+ * 
  * @author baboulou
  */
 public class VerifInstallService {

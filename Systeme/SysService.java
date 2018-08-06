@@ -5,10 +5,10 @@ import java.io.File;
 import Commun.Constante;
 
 /**
+ * Opération sur fichiers systèmes<br/>
+ * version Developpement 0.5<br/>
+ * 
  * @author baboulou
- * @param Opération
- *            sur fichiers systèmes<br/>
- *            version Developpement 0.5<br/>
  */
 public class SysService {
 	// propriétés de classe
@@ -26,7 +26,7 @@ public class SysService {
 	 * @param chemindirPartie
 	 * @param chemindirPerso
 	 *            <br/>
-	 * 			crée les répertoires de base
+	 *            crée les répertoires de base
 	 *
 	 * @author baboulou
 	 */

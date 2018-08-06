@@ -3,9 +3,9 @@ package Entitee;
 import java.util.List;
 
 /**
+ * Inventaire version Developpement 0.5<br/>
+ * 
  * @author baboulou
- * @param Inventaire
- *            version Developpement 0.5<br/>
  */
 public class Inventaire<T> {
 	// propriétés de classe

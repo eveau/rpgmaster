@@ -10,10 +10,10 @@ import Services.JoueurService;
 import Testing.MenuTest01;
 
 /**
+ * Menus du jeu<br/>
+ * version Developpement 0.5<br/>
+ * 
  * @author baboulou
- * @param Menus
- *            du jeu<br/>
- *            version Developpement 0.5<br/>
  */
 public class Menu {
 	// propriétés de classe
