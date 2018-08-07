@@ -68,19 +68,25 @@ public class Persoservice {
 		p.setNom(verifNomp());
 		// // 2.demander le genre
 		p.setGenre(saisieGenre());
+		System.out.println("fin création perso de nom et genre");
 		// 3.demander la classe
 		p.setClasse(saisieClasse());
+		System.out.println("fin création perso de sa classe");
 		// 4.Mettre les caracteristiques par défaut
 		creationCarac(j, p);
 		System.out.println("fin création perso à caracteristique");
 		// // 5.demander l'aspect
-		// p.setAspect(saisieAspectCreation());
+		creationAspect(j, p);
+		System.out.println("fin création perso de son aspect");
+
 		// // 6.creation d'inventaire par defo
 		// p.setInventaire(invdefo());
 		// // creation du fichier de liste de persos
 		// final List<Personnage> jListe2persos;
 		// j.setjListe2persos.add(p);
 		// creerListe2Persos();
+		// enregistrement en memoire
+		saveListePerso(j, p);
 		// // écriture des données dans le fichier
 		// ecritureFichierPerso(p);
 		JoueurService.EcritureFichierJoueur(j);
@@ -208,21 +214,20 @@ public class Persoservice {
 		p = MenuPerso.saisieMenuCaracks(p);
 		// enregistre dans joueur en memoire
 		// pb npe
-		System.out.println("Perso actuelle: " + p.toString());
+		System.out.println("Perso actuel: " + p.getNom() + " " + p.getCaracteristiques());
 
-		if (j.getjListe2persos() != null)
-		{
-
-			j.getjListe2persos().add(p);
-		}
-		else
-		{
-			final List<Personnage> pl = new ArrayList<>();
-			j.setjListe2persos(pl);
-			j.setjListe2persos((List<Personnage>) p);
-
-		}
-		System.out.println("liste de perso du joueur: " + j.getjListe2persos().toString());
+		// saveListePerso
+		// if (j.getjListe2persos() != null)
+		// {
+		//
+		// j.getjListe2persos().add(p);
+		// }
+		// else
+		// {
+		// j.setjListe2persos(p);// saveListePerso(j, p);
+		//
+		// }
+		// System.out.println("liste de perso du joueur: " + j.getjListe2persos().toString());
 		// écriture, essai sans liste2persos.bin donc écriture uniquement encapsulée dans fichier joueur
 
 	}
@@ -268,11 +273,14 @@ public class Persoservice {
 	public static void visuCarak(Personnage p)
 	{
 		System.out.println("Quelles sont les caracteristiques actuelles ?");
+		final int ptRestant = 72 - (p.getCaracteristiques().get("Intelligence") + p.getCaracteristiques().get("Dexterité") + p.getCaracteristiques().get("Force") + p.getCaracteristiques().get("Constitution")
+				+ p.getCaracteristiques().get("Volonté") + p.getCaracteristiques().get("Charisme"));
 		final Set<?> valeur = p.getCaracteristiques().keySet();
 		for (final Object cle : valeur)
 		{
 			System.out.println("Caracteristique " + cle + " attribué à: " + p.getCaracteristiques().get(cle));
 		}
+		System.out.println("points restant: " + ptRestant);
 	}
 
 	/**
@@ -287,6 +295,11 @@ public class Persoservice {
 	public static Object visuListePerso(Joueur j, short n)
 	{
 		final int totalperso = j.getjListe2persos().size();
+
+		// p.getCaracteristiques().get("Intelligence")
+		// j.getjListe2persos().get(i).getCaracteristiques().get("Intelligence") + j.getjListe2persos().get(i).getCaracteristiques().get("Dexterité")
+		// +j.getjListe2persos().get(i).getCaracteristiques().get("Force") + j.getjListe2persos().get(i).getCaracteristiques().get("Constitution")
+		// + j.getjListe2persos().get(i).getCaracteristiques().get("Volonté") + j.getjListe2persos().get(i).getCaracteristiques().get("Charisme"));
 		switch (n)
 		{
 		case 1:
@@ -364,6 +377,80 @@ public class Persoservice {
 
 	}// fin de effacePerso()
 
+	/**
+	 * Visualisation des caracteristiques du personnage <br/>
+	 *
+	 * @param Personnage
+	 *            p
+	 * @param Joueurwbr<br/>
+	 *            j création de l'aspect à la création du personnae
+	 * @author baboulou
+	 */
+	private static void creationAspect(Joueur j, Personnage p)
+	{
+		setAspectdefo(p);
+		p = MenuPerso.saisieMenuAspect(p);
+		// a ce stade j.getjListe2persos() est censé etre toujours vrai
+		// j.setjListe2persos(p);// saveListePerso(j, p);
+
+	}
+
+	/**
+	 * Visualisation des caracteristiques du personnage <br/>
+	 *
+	 * @param Personnage
+	 *            p <br/>
+	 *            initialise/reset les aspects aux valeurs par defaut
+	 * @author baboulou
+	 */
+	public static void setAspectdefo(Personnage p)
+	{
+		final HashMap<String, String> aspectdef = new HashMap<>();
+		aspectdef.put("Yeux", "bleux");
+		aspectdef.put("Yeux", "vert");
+		aspectdef.put("Yeux", "gris");
+		aspectdef.put("Yeux", "noisette");
+		aspectdef.put("Yeux", "noirs");
+		aspectdef.put("Yeux", "rouge");
+		aspectdef.put("Cheveux", "bleux");
+		aspectdef.put("Cheveux", "vert");
+		aspectdef.put("Cheveux", "gris");
+		aspectdef.put("Cheveux", "noisette");
+		aspectdef.put("Cheveux", "noirs");
+		aspectdef.put("Cheveux", "rouge");
+		p.setAspect(aspectdef);
+		// 4.menu de parametrage
+		p = MenuPerso.saisieMenuAspect(p);
+		System.out.println("Perso actuel: " + p.getNom() + " " + p.getAspect());
+
+	}
+
+	/**
+	 * Visualisation des caracteristiques du personnage <br/>
+	 *
+	 * @param Personnage
+	 *            p <br/>
+	 * @param Joueur
+	 *            j <br/>
+	 * @param setjListe2persos
+	 *            : enregistre en mémoire vive les changements de liste2perso
+	 * @author baboulou
+	 */
+	private static void saveListePerso(Joueur j, Personnage p)
+	{
+		if (j.getjListe2persos() != null)
+		{
+
+			j.getjListe2persos().add(p);
+		}
+		else
+		{
+			// premiere save quand le jListe2perso n'existe pas à la création du joueur
+			final List<Personnage> jListe2persosave = new ArrayList<>();
+			j.setjListe2persos(jListe2persosave);
+		}
+		System.out.println("liste de perso du joueur: " + j.getjListe2persos().toString());
+	}
 	// override
 	// tostring
 }

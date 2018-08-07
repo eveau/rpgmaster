@@ -1,6 +1,7 @@
 package Entitee;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class Joueur implements Serializable {
 	// genere un id unique
 	private int jid = (int) (Math.floor(Math.random() * 100));
 	// ArrayList<Personnage> vListe2persos;
-	List<Personnage> jListe2persos;
+	List<Personnage> jListe2persos = new ArrayList<>();
 
 	// List<Partie> vListe2parties;
 	// constructeur sans argument
