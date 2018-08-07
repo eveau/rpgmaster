@@ -346,7 +346,7 @@ public class Persoservice {
 			{
 				if (ab.equals(j.getjListe2persos().get(i2).getNom()))
 				{
-					final String tx = Menu.choixTxt("etes vous sur de supprimer " + j.getjListe2persos().get(i2).getNom());
+					final String tx = Menu.choixTxt("etes vous sur de supprimer " + j.getjListe2persos().get(i2).getNom() + "1.oui 2.non");
 					if (tx.equals("1") || tx.equals("oui"))
 					{
 						// partie suppression
