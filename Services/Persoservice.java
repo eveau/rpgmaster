@@ -354,18 +354,15 @@ public class Persoservice {
 			}
 			break;
 		}
-
 		return MenuPerso.creationPersoMenu(j);
 	}
 
 	public static Object effacePerso(Joueur j)
 	{
-		// visuPerso(j);
 		// à optimiser pour la saisie du perso à supprimer
 		System.out.println("quelle perso effacer ?");
 		final int totalperso = j.getjListe2persos().size();
-		int i;
-		for (i = 0; i < totalperso; i++)
+		for (int i = 0; i < totalperso; i++)
 		{
 			System.out.println(i + "." + " nom: " + j.getjListe2persos().get(i).getNom() + " classe: " + j.getjListe2persos().get(i).getClasse() + " level: " + j.getjListe2persos().get(i).getPointdeVie());
 		}
@@ -386,7 +383,16 @@ public class Persoservice {
 					final String tx = Menu.choixTxt("etes vous sur de supprimer " + j.getjListe2persos().get(i2).getNom());
 					if (tx.equals("1") || tx.equals("oui"))
 					{
-						System.out.println("suppression de " + j.getjListe2persos().get(i2).getNom());
+						// partie suppression
+						j.getjListe2persos().remove(i2);
+						// ecriture
+						final Joueur tmp = JoueurService.recupTotJoueur();
+						tmp.setjListe2persos(j.getjListe2persos());
+						if (tmp.getIdentifiant().equals(j.getIdentifiant()) && tmp.getMotDePasse().equals(j.getMotDePasse()))
+						{
+							JoueurService.EcritureFichierJoueur(tmp);
+							System.out.println("suppression de " + j.getjListe2persos().get(i2).getNom());
+						}
 					}
 					else
 					{
