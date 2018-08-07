@@ -7,6 +7,7 @@ import java.util.Scanner;
 import Commun.Constante;
 import Entitee.Joueur;
 import Services.JoueurService;
+import Services.Persoservice;
 import Testing.MenuTest01;
 
 /**
@@ -44,7 +45,7 @@ public class Menu {
 		}
 		else
 		{
-			a = "1.Se loguer 6.menuTest 4.Quitter";
+			a = "1.Se loguer 6.menuTest 7.veriftxt 4.Quitter";
 		}
 
 		final String c = choixTxt(a);
@@ -73,6 +74,9 @@ public class Menu {
 			break;
 		case "6":
 			MenuTest01.compareStringInt();
+			break;
+		case "7":
+			Persoservice.verifNomp();
 			break;
 		default:
 			System.out.println("erreur de saisie, choisir un nombre");

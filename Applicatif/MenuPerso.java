@@ -1,6 +1,7 @@
 package Applicatif;
 
 import Entitee.Joueur;
+import Entitee.Personnage;
 import Services.Persoservice;
 
 /**
@@ -89,7 +90,56 @@ public class MenuPerso {
 		}
 		return visuPerso(j);
 	}
-	// override
+
+	/**
+	 * Menu de paramétrage des caracteristiques du personnage <br/>
+	 * version à la création du perso ou les valeurs sont vides et non au passsage de niveau supérieur
+	 *
+	 * @param Personnage
+	 *            p
+	 * @author baboulou
+	 */
+	public static Personnage saisieMenuCaracks(Personnage p)
+	{
+		switch (Menu.choixTxt("saisir caracteristik: 1.Intelligence 2.Dexterité 3.Force 4.Constitution 5.Volonté 6.Charisme 7.Voir les caracteristiques actuelles 8.Terminer"))
+		{
+		case "1":
+			System.out.println("vers methode setting nb intelligence");
+			Persoservice.saisieCarack(p, "Intelligence");
+			break;
+		case "2":
+			System.out.println("vers methode setting nb Dexterité");
+			Persoservice.saisieCarack(p, "Dexterité");
+			break;
+		case "3":
+			System.out.println("vers methode setting nb Force");
+			Persoservice.saisieCarack(p, "Force");
+			break;
+		case "4":
+			System.out.println("vers methode setting nb Constitution");
+			Persoservice.saisieCarack(p, "Constitution");
+			break;
+		case "5":
+			System.out.println("vers methode setting nb Volonté");
+			Persoservice.saisieCarack(p, "Volonté");
+			break;
+		case "6":
+			System.out.println("vers methode setting nb Charisme");
+			Persoservice.saisieCarack(p, "Charisme");
+			break;
+		case "7":
+			System.out.println("vers methode  visuCaracteristiques(p)");
+			Persoservice.visuCarak(p);
+			return saisieMenuCaracks(p);
+		case "8":
+			System.out.println("Terminer, retour vers methode creationPerso()");
+			break;
+		default:
+			System.out.println("erreur de saisie, choisir un nombre");
+			return saisieMenuCaracks(p);
+		}
+		return p;
+	}// override
 
 	// tostring
 }

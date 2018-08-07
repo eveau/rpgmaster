@@ -66,10 +66,6 @@ public class JoueurService {
 		if (hasNonAlpha == true || ident == null || ident.isEmpty() || ident.length() < 3 || ident.length() > 20 || ident.contains(" "))
 		{
 			Constante.LOGJoueurService.info("erreur de saisie prenom\n saisir que des lettres avec chiffres sans espace d'au moins 3 caractères et un max de 20");
-			// pour la branche dev
-			// System.out.println( "erreur de saisie prenom\n saisir que des
-			// lettres avec chiffres sans espace d'au moins 3 caractères et un
-			// max de 20");
 			return verifIdent();
 		}
 		return ident;

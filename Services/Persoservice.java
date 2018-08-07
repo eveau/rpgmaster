@@ -71,15 +71,6 @@ public class Persoservice {
 		// 3.demander la classe
 		p.setClasse(saisieClasse());
 		// 4.Mettre les caracteristiques par défaut
-		// final HashMap<String, Integer> caracdef = new HashMap<>();
-		// caracdef.put("Dexterité", 10);
-		// caracdef.put("Intelligence", 10);
-		// caracdef.put("Force", 10);
-		// caracdef.put("Constitution", 10);
-		// caracdef.put("Volonté", 10);
-		// caracdef.put("Charisme", 10);
-		// p.setCaracteristiques(caracdef);
-		// 4.demander les caracteristiques
 		creationCarac(j, p);
 		System.out.println("fin création perso à caracteristique");
 		// // 5.demander l'aspect
@@ -112,7 +103,10 @@ public class Persoservice {
 			System.out.println("erreur de saisie du nom du perso\n ne saisir que des lettres avec chiffres sans espace");
 			return verifNomp();
 		}
+
 		return ident;
+		// a dev optimisation a voir plus tard
+		// return Methodes.verifTxt("du nom du Personnage", ident) ? verifNomp() : ident;
 	}
 
 	/**
@@ -211,7 +205,7 @@ public class Persoservice {
 		caracdef.put("Charisme", 10);
 		p.setCaracteristiques(caracdef);
 		// 4.menu de parametrage
-		p = saisieMenuCaracks(p);
+		p = MenuPerso.saisieMenuCaracks(p);
 		// enregistre dans joueur en memoire
 		// pb npe
 		System.out.println("Perso actuelle: " + p.toString());
@@ -229,58 +223,8 @@ public class Persoservice {
 
 		}
 		System.out.println("liste de perso du joueur: " + j.getjListe2persos().toString());
-		// écriture, essai sans liste2persos.bin donc ecriture uniquement encapsulée dans fichier joueur
+		// écriture, essai sans liste2persos.bin donc écriture uniquement encapsulée dans fichier joueur
 
-	}
-
-	/**
-	 * Menu de paramétrage des caracteristiques du personnage <br/>
-	 * version à la création du perso ou les valeurs sont vides et non au passsage de niveau supérieur
-	 *
-	 * @param Personnage
-	 *            p
-	 * @author baboulou
-	 */
-	private static Personnage saisieMenuCaracks(Personnage p)
-	{
-		switch (Menu.choixTxt("saisir caracteristik: 1.Intelligence 2.Dexterité 3.Force 4.Constitution 5.Volonté 6.Charisme 7.Voir les caracteristiques actuelles 8.Terminer"))
-		{
-		case "1":
-			System.out.println("vers methode setting nb intelligence");
-			saisieCarack(p, "Intelligence");
-			break;
-		case "2":
-			System.out.println("vers methode setting nb Dexterité");
-			saisieCarack(p, "Dexterité");
-			break;
-		case "3":
-			System.out.println("vers methode setting nb Force");
-			saisieCarack(p, "Force");
-			break;
-		case "4":
-			System.out.println("vers methode setting nb Constitution");
-			saisieCarack(p, "Constitution");
-			break;
-		case "5":
-			System.out.println("vers methode setting nb Volonté");
-			saisieCarack(p, "Volonté");
-			break;
-		case "6":
-			System.out.println("vers methode setting nb Charisme");
-			saisieCarack(p, "Charisme");
-			break;
-		case "7":
-			System.out.println("vers methode  visuCaracteristiques(p)");
-			visuCarak(p);
-			return saisieMenuCaracks(p);
-		case "8":
-			System.out.println("Terminer, retour vers methode creationPerso()");
-			break;
-		default:
-			System.out.println("erreur de saisie, choisir un nombre");
-			return saisieMenuCaracks(p);
-		}
-		return p;
 	}
 
 	/**
@@ -292,7 +236,7 @@ public class Persoservice {
 	 *            carac
 	 * @author baboulou
 	 */
-	private static Object saisieCarack(Personnage p, String carac)
+	public static Object saisieCarack(Personnage p, String carac)
 	{
 		visuCarak(p);
 		final int somme = p.getCaracteristiques().get("Intelligence") + p.getCaracteristiques().get("Dexterité") + p.getCaracteristiques().get("Force") + p.getCaracteristiques().get("Constitution")
@@ -311,7 +255,7 @@ public class Persoservice {
 			p.getCaracteristiques().put(carac, c);
 		}
 		System.out.println("fin du prog saisieCaracGenerik()");
-		return saisieMenuCaracks(p);
+		return MenuPerso.saisieMenuCaracks(p);
 	}
 
 	/**
@@ -321,7 +265,7 @@ public class Persoservice {
 	 *            p
 	 * @author baboulou
 	 */
-	private static void visuCarak(Personnage p)
+	public static void visuCarak(Personnage p)
 	{
 		System.out.println("Quelles sont les caracteristiques actuelles ?");
 		final Set<?> valeur = p.getCaracteristiques().keySet();
@@ -331,6 +275,15 @@ public class Persoservice {
 		}
 	}
 
+	/**
+	 * Visualisation des personnages <br/>
+	 *
+	 * @param Joueur
+	 *            j
+	 * @param n
+	 *            pour le mode de vue (courte 1,normale 0, détaillée 2)
+	 * @author baboulou
+	 */
 	public static Object visuListePerso(Joueur j, short n)
 	{
 		final int totalperso = j.getjListe2persos().size();
@@ -392,6 +345,10 @@ public class Persoservice {
 						{
 							JoueurService.EcritureFichierJoueur(tmp);
 							System.out.println("suppression de " + j.getjListe2persos().get(i2).getNom());
+						}
+						else
+						{
+							System.out.println("non authentifié pour cela");
 						}
 					}
 					else
